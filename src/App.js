@@ -1,7 +1,7 @@
 import { Route, createBrowserRouter, RouterProvider, createRoutesFromElements } from 'react-router-dom';
 import Root from './components/Root';
-import Shop from './components/Shop';
-import Cart from './components/Cart';
+import Shop from './pages/Shop';
+import Cart from './pages/Cart';
 import Anasayfa from './components/Main';
 import './App.css';
 
