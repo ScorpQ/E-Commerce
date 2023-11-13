@@ -1,13 +1,23 @@
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import './product.css'
+import { ShopContext } from '../context/ShopContext'
+import fetchProduct from '../services/productApi'
+
+const setDefaultCart = async () => {
+  const result = await fetchProduct()
+  let cart = {}
+  for (var i = 0; i < result.length; i++) {
+    cart[i] = 0
+  }
+  console.log(typeof cart)
+}
 
 const Product = ({ data }) => {
   const [key, setKey] = useState()
   const { id, title, price, description, category, image, rating } = data
+  const { addToCart } = useContext(ShopContext)
 
-  const addBacket = () => {
-    setKey(data)
-  }
+  setDefaultCart()
 
   return (
     <div className='product-card'>
@@ -20,9 +30,7 @@ const Product = ({ data }) => {
         </p>
         <p>${price}</p>
       </div>
-      <button data-index={id} onClick={addBacket}>
-        Add To Cart
-      </button>
+      <button onClick={() => addToCart(id)}>Add To Cart</button>
     </div>
   )
 }

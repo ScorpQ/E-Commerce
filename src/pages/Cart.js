@@ -1,11 +1,9 @@
-import { useContext } from 'react'
-import { ShopContext } from '../context/ShopContext'
+import { useContext, useEffect, useState } from 'react'
+
+import fetchProduct from '../services/productApi'
 
 function Cart() {
-  const product = useContext(ShopContext)
-
-  console.log(product)
-  return <h1>Cart </h1>
+  return <h1>card</h1>
 }
 
 export default Cart

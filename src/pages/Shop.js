@@ -1,22 +1,17 @@
 import { useState, useEffect } from 'react'
 import Product from '../components/Product'
-import product from '../components/Product'
+import fetchProduct from '../services/productApi'
 import './shop.css'
 
 function Shop() {
   const [data, setData] = useState()
 
-  const fetchProducts = async () => {
-    try {
-      const response = await fetch('https://fakestoreapi.com/products?limit=10', { method: 'GET' })
-      setData(response.ok ? await response.json() : null)
-    } catch (error) {
-      console.log('ERROR YEDIN')
-    }
-  }
-
   useEffect(() => {
-    fetchProducts()
+    const fetchData = async () => {
+      const result = await fetchProduct()
+      setData(result)
+    }
+    fetchData()
   }, [])
 
   return (
