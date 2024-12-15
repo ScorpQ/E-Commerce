@@ -5,4 +5,5 @@ public class Product {
     double discount;    
     String imageUrl;     
     int unitsInStock;   
+    String githubTest;
 }
